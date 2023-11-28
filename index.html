@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grafos</title>
+</head>
+<body>
+  <h1>Grafos</h1>
+  <div id="content"></div>
+
+  
+  <script>
+    // Obtener la ruta actual
+    var path = window.location.pathname;
+
+    // Función para cargar los archivos HTML en el contenedor
+    function loadPage(page) {
+      var content = document.getElementById('content');
+      content.innerHTML = '';
+
+      // Cargar el archivo HTML correspondiente
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', page, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          content.innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send();
+    }
+
+    // Enrutamiento
+    if (path.startsWith('/mapas')) {
+      loadPage('mapas/');
+    }
+  </script>
+</body>
+</html>
